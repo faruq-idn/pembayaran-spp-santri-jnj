@@ -112,4 +112,24 @@ return [
 
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
 
+
+    // config/auth.php Admin Auth
+
+'guards' => [
+    'admin' => [
+        'driver' => 'session',
+        'provider' => 'admins',
+    ],
+    // ...
+],
+
+'providers' => [
+    'admins' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Admin::class,
+    ],
+    // ...
+],
+
+
 ];

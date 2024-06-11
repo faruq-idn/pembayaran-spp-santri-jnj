@@ -7,16 +7,17 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateSantrisTable extends Migration
 {
-    public function up()
+    public function up() : void
     {
         Schema::create('santris', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kelas_id')->constrained('kelas')->onDelete('cascade');
+            $table->foreignId('kelas_santri_id')->references('id')->on('kelas_santris')->onDelete('cascade');
             $table->string('santri_wali_nama');
             $table->string('wali_hp');
             $table->string('santri_alamat');
             $table->date('santri_tgl_masuk');
             $table->string('santri_jenis_kelamin');
+            $table->string('role')->default('user');
             $table->timestamps();
         });
     }
@@ -24,5 +25,8 @@ class CreateSantrisTable extends Migration
     public function down()
     {
         Schema::dropIfExists('santris');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('role');
+        });
     }
 }

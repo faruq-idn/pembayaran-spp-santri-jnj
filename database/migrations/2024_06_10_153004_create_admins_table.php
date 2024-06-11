@@ -10,7 +10,7 @@ class CreateAdminsTable extends Migration
     public function up()
     {
         Schema::create('admins', function (Blueprint $table) {
-            $table->id();
+            $table->string('id')->primary();
             $table->string('admin_nama');
             $table->string('admin_no_hp');
             $table->string('email')->unique();

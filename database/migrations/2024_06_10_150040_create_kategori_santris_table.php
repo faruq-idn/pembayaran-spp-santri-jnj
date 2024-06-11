@@ -9,7 +9,7 @@ class CreateKategoriSantrisTable extends Migration
     public function up()
     {
         Schema::create('kategori_santris', function (Blueprint $table) {
-            $table->id();
+            $table->id('id');
             $table->string('kategori_nama');
             $table->decimal('kategori_nominal_pembayaran', 10, 2);
             $table->timestamps();
